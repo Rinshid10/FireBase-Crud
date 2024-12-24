@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "661871449369",
+    "project_id": "onestore-ceb4a",
+    "storage_bucket": "onestore-ceb4a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661871449369:android:9ff4e60b1f905985ad2188",
+        "android_client_info": {
+          "package_name": "com.example.one"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBG7YYqhzOml8qaOIeK4sB4wyBUb0dUr_E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
