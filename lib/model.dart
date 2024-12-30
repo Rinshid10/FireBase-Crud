@@ -5,4 +5,8 @@ class StudentData {
   Map<String, dynamic> ToFireStore() {
     return {"name": name, "age": age};
   }
+
+  factory StudentData.fromfireStore(Map<String, dynamic> fromFirebase) {
+    return StudentData(age: fromFirebase['age'], name: fromFirebase['name']);
+  }
 }

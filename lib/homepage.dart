@@ -9,7 +9,6 @@ class Homepage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    CollectionReference data = FirebaseFirestore.instance.collection('oneset');
     return Scaffold(
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
@@ -20,34 +19,23 @@ class Homepage extends StatelessWidget {
       appBar: AppBar(
         title: Text("Firebase"),
       ),
-      body: StreamBuilder(
-        stream: data.snapshots(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
-          } else if (snapshot.data?.docs.isEmpty == true) {
-            return Center(child: Text("No data available"));
-          }
+      body: Consumer<StudentProvider>(
+        builder: (context, value, child) => ListView.builder(
+          itemCount: value.list.length,
+          itemBuilder: (context, index) {
+            final data = value.list[index];
 
-          return Consumer<StudentProvider>(
-            builder: (context, value, child) => ListView.builder(
-              itemCount: snapshot.data?.docs.length ?? 0,
-              itemBuilder: (context, index) {
-                final data = snapshot.data?.docs[index];
-                final docId = data?.id;
-                return ListTile(
-                  trailing: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
-                    ],
-                  ),
-                  title: Text(data?['age'] ?? 'No title'),
-                );
-              },
-            ),
-          );
-        },
+            return ListTile(
+              trailing: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  IconButton(onPressed: () {}, icon: Icon(Icons.edit)),
+                ],
+              ),
+              title: Text(data.age ?? 'No title'),
+            );
+          },
+        ),
       ),
     );
   }

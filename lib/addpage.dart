@@ -1,7 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:one/homepage.dart';
+import 'package:one/model.dart';
 import 'package:one/provider.dart';
 import 'package:provider/provider.dart';
 
@@ -45,10 +45,9 @@ class addPage extends StatelessWidget {
               Consumer<StudentProvider>(builder: (context, firestore, child) {
                 return ElevatedButton(
                     onPressed: () {
-                      firestore.adddata();
+                      firestore.addData();
 
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Homepage()));
+                      Navigator.pop(context);
                     },
                     child: Text("submit"));
               }),
